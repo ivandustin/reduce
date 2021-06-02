@@ -1,24 +1,26 @@
-const assert   = require('assert')
 const collatia = require('collatia')
-const empty    = ''
 
-function reduce(entry) {
-    entry.data = entry.data.map(function(verse) {
-        let { selection } = verse
-        let verses     = longest(selection.map(flat))
-        let characters = verses.map(extract)
-        let value      = first(longest(characters))
-        let index      = characters.indexOf(value)
-        let reduction  = verses[index]
-        return Object.assign(verse, { reduction })
-    })
-    return entry
+function reduce(selection) {
+    let entries = selection.map(flat).map(count)
+    entries     = filter_max(entries, 'words')
+    entries     = filter_max(entries, 'characters')
+    return first(entries).verse
 }
 
-function longest(array) {
-    let lengths = array.map(value => value.length)
-    let max     = Math.max(...lengths)
-    return array.filter(value => value.length == max)
+function count(verse) {
+    let words      = verse.filter(identity).length
+    let characters = verse.map(word => collatia.overline.remove(word)).map(word => word.length).reduce(sum, 0)
+    return { words, characters, verse }
+}
+
+function sum(a, b) {
+    return a + b
+}
+
+function filter_max(array, property) {
+    let n   = array.map(object => object[property])
+    let max = Math.max(...n)
+    return array.filter(object => object[property] == max)
 }
 
 function first(array) {
@@ -29,14 +31,10 @@ function identity(value) {
     return value
 }
 
-function flat(array) {
-    return array.map(function(array) {
-        return first(longest(array))
-    }).filter(identity)
-}
-
-function extract(verse) {
-    return verse.map(word => collatia.overline.remove(word)).join(empty)
+function flat(verse) {
+    return verse.map(function(words) {
+        return first(filter_max(words, 'length'))
+    })
 }
 
 module.exports = reduce

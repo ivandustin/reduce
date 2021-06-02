@@ -9,9 +9,13 @@
     },
     "dependencies": {
         "argparse": "^2.0.1",
-        "collatia": "^0.1.12"
+        "collatia": "^0.1.12",
+        "mocha": "^8.4.0"
     },
     "bin": {
-        "reduce": "index.js"
+        "reduce": "main.js"
+    },
+    "scripts": {
+        "test": "mocha"
     }
 }
