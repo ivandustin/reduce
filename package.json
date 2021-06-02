@@ -1,0 +1,17 @@
+{
+    "name": "reducia",
+    "description": "Reduce selection",
+    "version": "0.1.0",
+    "license": "GPL-3.0-or-later",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ivandustin/reduce"
+    },
+    "dependencies": {
+        "argparse": "^2.0.1",
+        "collatia": "^0.1.12"
+    },
+    "bin": {
+        "reduce": "index.js"
+    }
+}
