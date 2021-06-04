@@ -1,8 +1,8 @@
 const collatia = require('collatia')
 
-function reduce(selection, manuscripts) {
+function reduce(selection) {
     let verses = selection.map(flat)
-    let scores = verses.map(verse => score(verse, manuscripts))
+    let scores = verses.map(verse => score(verse, verses))
     verses     = max(verses, scores)
     scores     = verses.map(verse => verse.filter(identity).length)
     verses     = max(verses, scores)
