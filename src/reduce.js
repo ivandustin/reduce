@@ -1,5 +1,6 @@
-const collatia = require('collatia')
-const empty    = ''
+const collatia  = require('collatia')
+const selectica = require('selectica')
+const empty     = ''
 
 function reduce(selection, manuscripts) {
     let verses = selection.map(flat)
@@ -37,13 +38,9 @@ function characters(word) {
     return collatia.overline.remove(word).length
 }
 
-function normalize(verse) {
-    return verse.map(word => word ? 1 : 0).join(empty)
-}
-
 function same(a) {
     return function(b) {
-        return collatia.same(normalize(a), normalize(b))
+        return selectica.algorithm.same(a, b)
     }
 }
 

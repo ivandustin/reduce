@@ -10,7 +10,8 @@
     "dependencies": {
         "argparse": "^2.0.1",
         "collatia": "^0.1.12",
-        "mocha": "^8.4.0"
+        "mocha": "^8.4.0",
+        "selectica": "^0.1.0"
     },
     "bin": {
         "reduce": "main.js"
