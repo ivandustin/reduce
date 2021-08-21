@@ -1,7 +1,7 @@
 {
     "name": "reducia",
     "description": "Reduce selection",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license": "GPL-3.0-or-later",
     "repository": {
         "type": "git",
@@ -11,7 +11,7 @@
         "argparse": "^2.0.1",
         "collatia": "^0.1.12",
         "mocha": "^8.4.0",
-        "selectica": "^0.1.0"
+        "selectica": "^0.2.0"
     },
     "bin": {
         "reduce": "main.js"

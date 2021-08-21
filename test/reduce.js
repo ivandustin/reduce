@@ -1,38 +1,59 @@
 const assert   = require('assert')
-const reduce   = require('../src/reduce')
 const collatia = require('collatia')
+const reduce   = require('../src/reduce')
 
 describe('reduce', function() {
     it('is correct', function() {
-        let manuscripts = [
-            ['A', 'B', 'C', 'D', 'E', '',  ''],
-            ['A', 'B', 'C', 'D', 'E', '',  ''],
-            ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        let input = [
+            ['A', 'B', '', ''],
+            ['A', 'B', '', ''],
+            ['A', 'B', 'C', 'D'],
         ]
-        let selection   = [
-            [ ['A'], ['B'], ['C'], ['D', 'DDD'],                       ['E'], [''],  ['']  ],
-            [ ['A'], ['B'], ['C'], ['D', collatia.overline.add('DD')], ['E'], [''],  ['']  ],
-            [ ['A'], ['B'], ['C'], ['D'],                              [''],  ['F'], ['G'] ],
-            [ ['A'], ['B'], [''],  ['D'],                              ['E'], [''],  ['']  ],
-        ]
-        let expected = ['A', 'B', 'C', 'DDD', 'E', '', '']
-        let actual   = reduce(selection, manuscripts)
-        assert.deepEqual(actual, expected)
+        let expected = ['A', 'B', '', '']
+        let output   = reduce(input)
+        assert.deepEqual(output, expected)
     })
     it('is correct', function() {
-        let manuscripts = [
-            ['A', 'B', 'C', 'D', 'E', '',  ''],
-            ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-            ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        let input = [
+            ['A', 'B', '', ''],
+            ['A', 'B', '', ''],
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', ''],
         ]
-        let selection   = [
-            [ ['A'], ['B'], ['C'], ['D', 'DDD'],                       ['E'], [''],  ['']  ],
-            [ ['A'], ['B'], ['C'], ['D', collatia.overline.add('DD')], ['E'], [''],  ['']  ],
-            [ ['A'], ['B'], ['C'], ['D'],                              [''],  ['F'], ['G'] ],
-            [ ['A'], ['B'], [''],  ['D'],                              ['E'], [''],  ['']  ],
+        let expected = ['A', 'B', 'C', 'D']
+        let output   = reduce(input)
+        assert.deepEqual(output, expected)
+    })
+    it('is correct', function() {
+        let input = [
+            ['A', 'B', '', ''],
+            ['A', 'B', '', ''],
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', 'DD'],
         ]
-        let expected = ['A', 'B', 'C', 'D', '', 'F', 'G']
-        let actual   = reduce(selection, manuscripts)
-        assert.deepEqual(actual, expected)
+        let expected = ['A', 'B', 'C', 'DD']
+        let output   = reduce(input)
+        assert.deepEqual(output, expected)
+    })
+    it('is correct', function() {
+        let input = [
+            ['A', 'B', '', ''],
+            ['A', 'B', '', ''],
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', collatia.overline.add('D')],
+        ]
+        let expected = ['A', 'B', 'C', 'D']
+        let output   = reduce(input)
+        assert.deepEqual(output, expected)
+    })
+    it('is correct', function() {
+        let input = [
+            ['A', '', '', '', ''],
+            ['A', 'B', '', '', ''],
+            ['A', '', '', 'B', 'C'],
+        ]
+        let expected = ['A', '', '', 'B', 'C']
+        let output   = reduce(input)
+        assert.deepEqual(output, expected)
     })
 })
