@@ -1,34 +1,25 @@
 const selectica = require('selectica')
 
 function cluster(verses) {
-    let bucket = copy(verses)
-    let result = []
-    while(bucket.length > 0) {
-        let element = bucket.shift()
-        let array   = get_same(element, bucket)
-        array.unshift(element)
-        result.push(array)
-    }
-    return result
+    let elements = verses
+    let clusters = []
+    elements.forEach(function(element) {
+        let filtered = filter(clusters, element)
+        if (filtered.length > 0) {
+            filtered.forEach(function(cluster) {
+                cluster.push(element)
+            })
+        } else {
+            clusters.push([element])
+        }
+    })
+    return clusters
 }
 
-function copy(array) {
-    return array.slice()
-}
-
-function get_same(element, bucket) {
-    let indices = bucket.map(function(target, index) {
-        if (is_same(target, element))
-            return index
-        return -1
-    }).filter(value => ~value)
-    let result = bucket.filter(function(value, index) {
-        return ~indices.indexOf(index)
+function filter(clusters, element) {
+    return clusters.filter(function(cluster) {
+        return cluster.find(x => is_same(x, element))
     })
-    indices.forEach(function(index) {
-        bucket.splice(index, 1)
-    })
-    return result
 }
 
 function is_same(a, b) {
