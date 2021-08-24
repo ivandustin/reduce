@@ -8,8 +8,7 @@ const minimum_witness   = 2
 function reduce(selection, manuscripts = []) {
     let result = []
     if (is_single_reading(selection, manuscripts)) {
-        result = manuscripts.map(manuscript => manuscript.words)
-                            .find(verse => verse.filter(identity).length > 0)
+        result = manuscripts.find(verse => verse.filter(identity).length > 0)
     } else {
         let verses   = selection
         let clusters = cluster(verses)

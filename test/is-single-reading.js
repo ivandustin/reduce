@@ -5,15 +5,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['A', 'B', 'C', '']
-                },
-                {
-                    words: ['', '', '', '']
-                }
+                ['', '', '', ''],
+                ['A', 'B', 'C', ''],
+                ['', '', '', '']
             ],
             selection: [
                 ['A', 'B', 'C', '']
@@ -26,15 +20,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['A', 'B', 'C', '']
-                },
-                {
-                    words: ['', '', '', '']
-                }
+                ['', '', '', ''],
+                ['A', 'B', 'C', ''],
+                ['', '', '', '']
             ],
             selection: [
                 ['A', 'B', 'C', ''],
@@ -48,15 +36,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['A', 'B', 'C', '']
-                },
-                {
-                    words: ['A', 'B', 'C', 'D']
-                }
+                ['', '', '', ''],
+                ['A', 'B', 'C', ''],
+                ['A', 'B', 'C', 'D']
             ],
             selection: [
                 ['A', 'B', 'C', ''],
@@ -70,15 +52,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['A', 'B', 'C', '']
-                },
-                {
-                    words: ['', '', '', '']
-                }
+                ['', '', '', ''],
+                ['A', 'B', 'C', ''],
+                ['', '', '', '']
             ],
             selection: [
                 ['', '', '', '']
@@ -91,15 +67,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['', '', '', '']
-                }
+                ['', '', '', ''],
+                ['', '', '', ''],
+                ['', '', '', '']
             ],
             selection: [
                 ['', '', '', '']
@@ -112,15 +82,9 @@ describe('is single reading', function() {
     it('is correct', function() {
         let input = {
             manuscripts: [
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['', '', '', '']
-                },
-                {
-                    words: ['', '', '', '']
-                }
+                ['', '', '', ''],
+                ['', '', '', ''],
+                ['', '', '', '']
             ],
             selection: [
                 ['A', 'B', 'C', '']

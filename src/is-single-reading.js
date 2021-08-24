@@ -2,7 +2,7 @@ const identity = require('./identity')
 
 function is_single_reading(selection, manuscripts) {
     selection   = selection.filter(filter)
-    manuscripts = manuscripts.map(manuscript => manuscript.words).filter(filter)
+    manuscripts = manuscripts.filter(filter)
     return selection.length == 0 && manuscripts.length == 1
 }
 
