@@ -56,4 +56,34 @@ describe('reduce', function() {
         let output   = reduce(input)
         assert.deepEqual(output, expected)
     })
+    it('is correct', function() {
+        let input = {
+            manuscripts: [
+                ['',  '',  '',  ''],
+                ['A', 'B', 'C', ''],
+                ['',  '',  '',  '']
+            ],
+            selection: [
+                ['',  '',  '',  '']
+            ]
+        }
+        let expected = ['A', 'B', 'C', '']
+        let output   = reduce(input.selection, input.manuscripts)
+        assert.deepEqual(output, expected)
+    })
+    it('is correct', function() {
+        let input = {
+            manuscripts: [
+                ['', '', '', ''],
+                ['', '', '', ''],
+                ['', '', '', '']
+            ],
+            selection: [
+                ['', '', '', '']
+            ]
+        }
+        let expected = ['', '', '', '']
+        let output   = reduce(input.selection, input.manuscripts)
+        assert.deepEqual(output, expected)
+    })
 })
